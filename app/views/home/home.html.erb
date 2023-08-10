@@ -4,6 +4,9 @@
     <p>Name: <%= @user.name%></p>
     <p>Email: <%= @user.email%></p>
     <p>Username: <%= @user.username%></p>
+    <p>Followers: <%= @followers%></p>
+    <p>Following: <%= @following%></p>
+
     <%= link_to 'Logout', login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"} %>
     <div class="container p-2 d-flex flex-column justify-content-center align-items-center">
     <%@tweets.each do |tweet|%>
