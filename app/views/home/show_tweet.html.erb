@@ -7,6 +7,11 @@
                 <p class="fs-4"><%=@tweet.message%></p>
                 <small style="color: gray;"><%=time_ago_in_words(@tweet.created_at)%></small>
             </div>
+            <%@current_user.friends.each do |friend|%>
+                <%if friend.id == @tweet.user_id%>
+                    <small>You are follow <%=friend.username%></small>
+                <%end%>
+            <%end%>
             <%if @tweet.user_id == session[:user_id]%>
                 <%= link_to 'Delete', tweet_path(@tweet), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
             <%end%>
