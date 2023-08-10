@@ -37,6 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_172144) do
     t.string "password_digest"
   end
 
-  add_foreign_key "friendships", "user", column: "friend_id"
   add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
 end
