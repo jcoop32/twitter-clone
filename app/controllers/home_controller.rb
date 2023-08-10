@@ -23,5 +23,11 @@ class HomeController < ApplicationController
     @tweet = Tweet.find(params[:id])
   end
 
+  def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to root_path
+  end
+
 
 end

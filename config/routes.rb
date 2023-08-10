@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#home'
   post '/', to: 'home#create_tweet'
   get 'tweet/:id', to: 'home#show_tweet'
+  resources :tweet, only: [:destroy], to: 'home#destroy'
   # login routes
   get 'login', to: 'auth#new_session'
   post 'login', to: 'auth#create_session'

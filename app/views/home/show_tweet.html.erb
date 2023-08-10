@@ -7,5 +7,8 @@
                 <p class="fs-4"><%=@tweet.message%></p>
                 <small style="color: gray;"><%=time_ago_in_words(@tweet.created_at)%></small>
             </div>
+            <%if @tweet.user_id == session[:user_id]%>
+                <%= link_to 'Delete', tweet_path(@tweet), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+            <%end%>
         </div>
 </div>
