@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.tweet-container:hover {
+  background-color: #16181c;
+}

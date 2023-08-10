@@ -15,9 +15,12 @@ class HomeController < ApplicationController
       flash[:notice] = "Tweet successful"
       redirect_to root_path
     else
-      flash[:notice] = "Something went wrong"
-      render 'new_tweet'
+      flash.now[:alert] = "Something went wrong"
     end
+  end
+
+  def show_tweet
+    @tweet = Tweet.find(params[:id])
   end
 
 

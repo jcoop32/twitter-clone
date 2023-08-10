@@ -1,0 +1,11 @@
+<div class="container p-2 d-flex flex-column justify-content-center align-items-center">
+    <a href="/" class="container">Back</a>
+    <div class="container border p-2" style="width: 55%;">
+            <h5><%=@tweet.user.name%> </h5>
+            <span style="color: gray;">@<%=@tweet.user.username%></span>
+            <div class="container">
+                <p class="fs-4"><%=@tweet.message%></p>
+                <small style="color: gray;"><%=time_ago_in_words(@tweet.created_at)%></small>
+            </div>
+        </div>
+</div>

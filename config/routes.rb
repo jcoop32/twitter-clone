@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # dashboard routes
   root 'home#home'
   post '/', to: 'home#create_tweet'
+  get 'tweet/:id', to: 'home#show_tweet'
   # login routes
   get 'login', to: 'auth#new_session'
   post 'login', to: 'auth#create_session'
