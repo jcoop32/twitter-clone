@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def home
     @user = User.find(session[:user_id])
-    @tweets = Tweet.all.reverse
+    @tweets_following = Tweet.where(user_id: @user.friendships).reverse
+    @tweets_for_you = Tweet.all.reverse
     @following = @user.friends.count
     @followers = Friendship.where(friend_id: @user.id).count
   end

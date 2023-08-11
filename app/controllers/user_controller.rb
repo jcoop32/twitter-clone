@@ -58,8 +58,8 @@ class UserController < ApplicationController
     current_user = User.find(session[:user_id])
     current_user.friendships.build(friend_id: params[:id])
     if current_user.save
-      flash[:notice] = 'Now Following'
-      redirect root_path
+      # flash[:notice] = 'Now Following'
+      redirect_to root_path
     else
       flash[:notice] = 'Something went wrong'
       redirect_to root_path
