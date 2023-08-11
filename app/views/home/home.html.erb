@@ -1,22 +1,27 @@
-<div class="container">
-    <h1>Twitter</h1>
-    <%=render 'new_tweet'%>
-    <p>Name: <%= @user.name%></p>
-    <p>Email: <%= @user.email%></p>
-    <p>Username: <%= @user.username%></p>
-    <p>Followers: <%= @followers%></p>
-    <p>Following: <%= @following%></p>
-    <%= link_to 'Logout', login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"} %>
+<div class="container ">
+    <div class="side-bar ">
+        <h1>Twitter</h1>
+        <%=render 'new_tweet'%>
+        <div class="border rounded p-2 text-center">
+            <p>Name: <strong><%= @user.name%></strong></p>
+            <p>Username: <strong><%= @user.username%></strong></p>
+            <p>Followers: <%= @followers%></p>
+            <p>Following: <%= @following%></p>
+        </div>
+        <%= link_to 'Logout', login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"}, class: "btn btn-light my-3" %>
+    </div>
     <%# tweet container %>
-    <div class="container p-2 d-flex flex-column justify-content-center align-items-center">
+    <div class="container p-2 d-flex flex-column justify-content-center align-items-center mt-3 ">
         <%@tweets.each do |tweet|%>
-            <div class="container border p-2 " style="width: 55%; ">
+            <div class="container border p-2 " style="width: 55%; height: 190px">
                 <div class="d-inline-flex tweet-container" onclick="location.href='/user/<%=tweet.user.id%>';">
                     <p style="margin-right: 5px;"><%=tweet.user.name%></p>
                     <p style="color: gray; cursor: pointer;">@<%=tweet.user.username%></p>
                 </div>
-                <div class="container tweet-container" onclick="location.href='/tweet/<%=tweet.id%>';">
-                    <h6><%=tweet.message%></h6>
+                <div class="container tweet-container mt-3" style="cursor: pointer;" onclick="location.href='/tweet/<%=tweet.id%>';">
+                    <h6 class="mb-4" style="font-family: Tahoma, sans-serif; font-size: medium;"><%=tweet.message%></h6>
+                </div>
+                <div class="container mt-4">
                     <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
                 </div>
             </div>

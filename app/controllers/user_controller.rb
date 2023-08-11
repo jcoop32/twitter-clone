@@ -59,7 +59,7 @@ class UserController < ApplicationController
     current_user.friendships.build(friend_id: params[:id])
     if current_user.save
       flash[:notice] = 'Now Following'
-      redirect_to root_path
+      redirect root_path
     else
       flash[:notice] = 'Something went wrong'
       redirect_to root_path

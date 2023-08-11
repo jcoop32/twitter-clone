@@ -17,3 +17,12 @@
 .tweet-container:hover {
   background-color: #16181c;
 }
+
+.side-bar {
+  position: fixed;
+}
+
+.div-h {
+  height: 150px;
+  resize: none;
+}
