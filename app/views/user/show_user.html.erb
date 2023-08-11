@@ -1,6 +1,10 @@
 <div class="container">
     <h1><%=@user.username%>'s Profile</h1>
-    <%# <button class="btn btn-primary">Follow</button> %>
+    <%if @current_user.id != @user.id && @current_user.not_friends_with?(@user.id)%>
+        <form action="/follow/<%=@user.id%>" method="post">
+            <button type="submit" class="btn btn-primary">Follow</button>
+        </form>
+    <%end%>
     <%@tweets.each do |tweet|%>
         <div class="container">
             <div onclick="location.href='/tweet/<%=tweet.id%>';" class="container border p-2 tweet-container" style="width: 55%; cursor: pointer;">

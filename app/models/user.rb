@@ -14,4 +14,9 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships
 
+
+  def not_friends_with?(id)
+    !self.friends.where(id: id).exists?
+  end
+
 end

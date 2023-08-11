@@ -49,9 +49,21 @@ class UserController < ApplicationController
   # user profile
   def show_user
     @user = User.find(params[:id])
+    @current_user = User.find(session[:user_id])
     @tweets = Tweet.where(user_id: @user.id)
   end
 
-
+  def follow_user
+    # friend = User.find(params[:id])
+    current_user = User.find(session[:user_id])
+    current_user.friendships.build(friend_id: params[:id])
+    if current_user.save
+      flash[:notice] = 'Now Following'
+      redirect_to root_path
+    else
+      flash[:notice] = 'Something went wrong'
+      redirect_to root_path
+    end
+  end
 
 end
