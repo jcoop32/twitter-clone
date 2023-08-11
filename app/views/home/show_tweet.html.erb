@@ -2,14 +2,14 @@
     <a href="/" class="container">Back</a>
     <div class="container border p-2" style="width: 55%;">
             <h5><%=@tweet.user.name%> </h5>
-            <span style="color: gray;">@<%=@tweet.user.username%></span>
+            <a style="color: gray;" href="/user/<%=@tweet.user.id%>">@<%=@tweet.user.username%></a>
             <div class="container">
                 <p class="fs-4"><%=@tweet.message%></p>
                 <small style="color: gray;"><%=time_ago_in_words(@tweet.created_at)%></small>
             </div>
             <%@current_user.friends.each do |friend|%>
                 <%if friend.id == @tweet.user_id%>
-                    <small>You are follow <%=friend.username%></small>
+                    <small>You follow <%=friend.username%></small>
                 <%end%>
             <%end%>
             <%if @tweet.user_id == session[:user_id]%>

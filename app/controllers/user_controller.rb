@@ -1,4 +1,4 @@
-class AuthController < ApplicationController
+class UserController < ApplicationController
   # signup
   def new_user
     @user = User.new
@@ -19,14 +19,13 @@ class AuthController < ApplicationController
 
   # login/session
   def new_session
-
   end
 
   def create_session
     # find user by username
-    user = User.find_by(username: params[:auth][:username])
+    user = User.find_by(username: params[:user][:username])
     # check password
-    if user && user.authenticate(params[:auth][:password])
+    if user && user.authenticate(params[:user][:password])
       # set session to logged in user
       session[:user_id] = user.id
       # display success notice
@@ -46,5 +45,13 @@ class AuthController < ApplicationController
     # redirect back to login page
     redirect_to '/login'
   end
+
+  # user profile
+  def show_user
+    @user = User.find(params[:id])
+    @tweets = Tweet.where(user_id: @user.id)
+  end
+
+
 
 end

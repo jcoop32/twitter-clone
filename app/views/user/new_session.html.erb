@@ -2,7 +2,7 @@
 
 
 <div class="p-3">
-<%= form_with(scope: :auth, url: login_path, local: true) do |f|%>
+<%= form_with(scope: :user, url: login_path, local: true) do |f|%>
     <p>
         <%=f.label :username%>
         <br>

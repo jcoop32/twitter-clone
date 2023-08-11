@@ -1,0 +1,13 @@
+<div class="container">
+    <h1><%=@user.username%>'s Profile</h1>
+    <%# <button class="btn btn-primary">Follow</button> %>
+    <%@tweets.each do |tweet|%>
+        <div class="container">
+            <div onclick="location.href='/tweet/<%=tweet.id%>';" class="container border p-2 tweet-container" style="width: 55%; cursor: pointer;">
+            <p><%=tweet.user.name%> <span style="color: gray;">@<%=tweet.user.username%></span></p>
+                <h6><%=tweet.message%></h6>
+                <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
+            </div>
+        </div>
+    <%end%>
+</div>

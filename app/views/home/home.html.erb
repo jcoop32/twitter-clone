@@ -1,24 +1,25 @@
 <div class="container">
-<h1>Twitter</h1>
+    <h1>Twitter</h1>
     <%=render 'new_tweet'%>
     <p>Name: <%= @user.name%></p>
     <p>Email: <%= @user.email%></p>
     <p>Username: <%= @user.username%></p>
     <p>Followers: <%= @followers%></p>
     <p>Following: <%= @following%></p>
-
     <%= link_to 'Logout', login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"} %>
+    <%# tweet container %>
     <div class="container p-2 d-flex flex-column justify-content-center align-items-center">
-    <%@tweets.each do |tweet|%>
-        <div onclick="location.href='/tweet/<%=tweet.id%>';" class="container border p-2 tweet-container" style="width: 55%; cursor: pointer;">
-            <p><%=tweet.user.name%> <span style="color: gray;">@<%=tweet.user.username%></span></p>
-            <div class="container">
-                <h6><%=tweet.message%></h6>
-                <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
+        <%@tweets.each do |tweet|%>
+            <div class="container border p-2 " style="width: 55%; ">
+                <div class="d-inline-flex tweet-container" onclick="location.href='/user/<%=tweet.user.id%>';">
+                    <p style="margin-right: 5px;"><%=tweet.user.name%></p>
+                    <p style="color: gray; cursor: pointer;">@<%=tweet.user.username%></p>
+                </div>
+                <div class="container tweet-container" onclick="location.href='/tweet/<%=tweet.id%>';">
+                    <h6><%=tweet.message%></h6>
+                    <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
+                </div>
             </div>
-
-        </div>
-    <%end%>
-
-</div>
+        <%end%>
+    </div>
 </div>
