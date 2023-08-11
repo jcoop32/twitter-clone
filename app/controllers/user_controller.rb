@@ -29,7 +29,7 @@ class UserController < ApplicationController
       # set session to logged in user
       session[:user_id] = user.id
       # display success notice
-      flash[:notice] = "Successful login"
+      # flash[:notice] = "Successful login"
       # go back to home/dashboard
       redirect_to root_path
     else

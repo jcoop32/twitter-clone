@@ -1,21 +1,28 @@
-<h1>Login</h1>
+<div class="container d-flex flex-column justify-content-center align-items-center border rounded mt-5 p-2">
+
+    <div>
+        <h1>Login</h1>
+    </div>
 
 
-<div class="p-3">
-<%= form_with(scope: :user, url: login_path, local: true) do |f|%>
-    <p>
-        <%=f.label :username%>
-        <br>
-        <%=f.text_field :username%>
-    </p>
-    <p>
-        <%=f.label :password%>
-        <br>
-        <%=f.password_field :password%>
-    </p>
-    <button type="submit">Log In</button>
-<%end%>
-<a href="/signup">Sign up</a>
+    <div class="p-3">
+    <%= form_with(scope: :user, url: login_path, local: true) do |f|%>
+        <p>
+            <%=f.label :username%>
+            <br>
+            <%=f.text_field :username%>
+        </p>
+        <p>
+            <%=f.label :password%>
+            <br>
+            <%=f.password_field :password%>
+        </p>
+        <button type="submit" class="btn btn-primary">Log In</button>
+    <%end%>
+    <br>
+    <a href="/signup">
+        <button class="btn btn-warning">Sign Up</button>
+    </a>
 
+    </div>
 </div>
-

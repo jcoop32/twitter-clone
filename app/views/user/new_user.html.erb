@@ -1,42 +1,49 @@
-<h1>Signup</h1>
+<div class="container d-flex flex-column justify-content-center align-items-center border rounded mt-5">
+    <div class="">
 
-<% if @user.errors.any? %>
-    <h2>The following errors prevented the user from being saved: </h2>
-    <ul>
-        <%@user.errors.full_messages.each do |msg|%>
-            <li><%=msg%></li>
-        <%end%>
-    </ul>
-<%end%>
+    <h1>Signup</h1>
 
-<div class="p-3">
+    <% if @user.errors.any? %>
+        <h2>The following errors prevented the user from being saved: </h2>
+        <ul>
+            <%@user.errors.full_messages.each do |msg|%>
+                <li><%=msg%></li>
+            <%end%>
+        </ul>
+    <%end%>
+    </div>
 
-<%= form_with(scope: :user, local: true) do |f|%>
-    <p>
-        <%=f.label :name%>
-        <br>
-        <%=f.text_field :name%>
-    </p>
+    <div class="p-3">
+    <%= form_with(scope: :user, local: true) do |f|%>
+        <p>
+            <%=f.label :name%>
+            <br>
+            <%=f.text_field :name%>
+        </p>
 
-    <p>
-        <%=f.label :username%>
-        <br>
-        <%=f.text_field :username%>
-    </p>
+        <p>
+            <%=f.label :username%>
+            <br>
+            <%=f.text_field :username%>
+        </p>
 
-    <p>
-        <%=f.label :email%>
-        <br>
-        <%=f.text_field :email%>
-    </p>
+        <p>
+            <%=f.label :email%>
+            <br>
+            <%=f.text_field :email%>
+        </p>
 
-    <p>
-        <%=f.label :password%>
-        <br>
-        <%=f.password_field :password%>
-    </p>
-    <button type="submit">Signup</button>
-<%end%>
-<a href="/login">Login</a>
+        <p>
+            <%=f.label :password%>
+            <br>
+            <%=f.password_field :password%>
+        </p>
+        <button type="submit" class="btn btn-light">Signup</button>
+    <%end%>
+    <br>
+    <a href="/login">
+        Already a user, Log In.
+    </a>
+    </div>
 </div>
 

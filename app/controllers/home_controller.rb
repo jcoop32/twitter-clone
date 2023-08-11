@@ -14,10 +14,10 @@ class HomeController < ApplicationController
     @tweet = Tweet.new(params.permit(:message))
     @tweet.user_id = session[:user_id]
     if @tweet.save
-      flash[:notice] = "Tweet successful"
+      # flash[:notice] = "Tweet successful"
       redirect_to root_path
     else
-      flash.now[:alert] = "Something went wrong"
+      flash.now[:notice] = "Something went wrong"
     end
   end
 
