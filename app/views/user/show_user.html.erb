@@ -9,16 +9,17 @@
             </button>
         </a>
     </div>
-    <div class="d-flex justify-content-center align-items-center mb-4">
-        <div class="me-5">
+    <div class="d-flex flex-column justify-content-center align-items-center mb-4">
+        <div class="">
             <h1>@<%=@user.username%></h1>
         </div>
-
         <div>
         <%if @current_user.id != @user.id && @current_user.not_friends_with?(@user.id)%>
             <form action="/follow/<%=@user.id%>" method="post">
                 <button type="submit" class="btn btn-primary">Follow</button>
             </form>
+        <% else %>
+            <%= link_to 'Unfollow', friendship_path(@user), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-danger"%>
         <%end%>
         </div>
 

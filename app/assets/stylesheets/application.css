@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+body {
+  height: 100%;
+}
 
 .tweet-container:hover {
   background-color: #16181c;

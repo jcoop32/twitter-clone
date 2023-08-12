@@ -33,7 +33,6 @@ class HomeController < ApplicationController
   def show_tweet
     @tweet = Tweet.find(params[:id])
     @current_user = User.find(session[:user_id])
-
   end
 
   def destroy

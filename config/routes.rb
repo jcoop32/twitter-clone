@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # follow user
   post '/follow/:id', to: 'user#follow_user'
+  resources :friendship, only: [:destroy], to: 'user#unfollow_user'
 
   # login routes
   get 'login', to: 'user#new_session'

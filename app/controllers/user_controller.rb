@@ -59,11 +59,19 @@ class UserController < ApplicationController
     current_user.friendships.build(friend_id: params[:id])
     if current_user.save
       # flash[:notice] = 'Now Following'
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       flash[:notice] = 'Something went wrong'
       redirect_to root_path
     end
+  end
+
+  def unfollow_user
+    current_user = User.find(session[:user_id])
+    friendship = current_user.friendships.where(friend_id: params[:id]).first
+    friendship.destroy
+    # flash[:notice] = "Stopped unfollowed"
+    redirect_back(fallback_location: root_path)
   end
 
 end

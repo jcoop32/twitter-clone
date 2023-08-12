@@ -1,14 +1,23 @@
 <%@tweets.each do |tweet|%>
-    <div class="container border p-2 " style="width: 55%; height: 185px">
+    <div class="container border p-2 " style="width: 55%;">
         <div class="d-inline-flex tweet-container rounded p-2" onclick="location.href='/user/<%=tweet.user.id%>';">
             <p style="margin-right: 5px;"><%=tweet.user.name%></p>
             <p style="color: gray; cursor: pointer;">@<%=tweet.user.username%></p>
         </div>
-        <div class="container tweet-container rounded" style="cursor: pointer;" onclick="location.href='/tweet/<%=tweet.id%>';">
-            <h6 class="" style="font-family: Tahoma, sans-serif; font-size: medium;"><%=tweet.message%></h6>
-        </div>
-        <div class="container mt-3">
-            <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
+        <div class="tweet-container" style="cursor: pointer;" onclick="location.href='/tweet/<%=tweet.id%>';">
+            <div class="container" >
+                <h6 class="" style="font-family: Tahoma, sans-serif;"><%=tweet.message%></h6>
+            </div>
+            <div class="container d-flex justify-content-between align-items-center">
+                <div>
+                    <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
+                </div>
+                <%# <button class="btn"><i class="fa-solid fa-heart"></i></button> %>
+                <div class="d-flex align-items-center justify-content-end">
+                    <button class="btn"><i class="fa-regular fa-heart"></i></button>
+                    <span><%= tweet.likes%></span>
+                </div>
+            </div>
         </div>
     </div>
 <%end%>
