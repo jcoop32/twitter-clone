@@ -27,7 +27,7 @@
     <p class="text-center">Tweets</p>
     <%@tweets.each do |tweet|%>
         <div class="container">
-            <div onclick="location.href='/tweet/<%=tweet.id%>';" class="container border p-2 tweet-container" style="width: 55%; cursor: pointer;">
+            <div onclick="location.href='/tweet/<%=tweet.id%>';" class="container border p-3 tweet-container" style="width: 55%; cursor: pointer;">
             <p><%=tweet.user.name%> <span style="color: gray;">@<%=tweet.user.username%></span></p>
                 <h6><%=tweet.message%></h6>
                 <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>

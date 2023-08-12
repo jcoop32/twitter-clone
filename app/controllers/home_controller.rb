@@ -31,17 +31,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def show_tweet
-    @tweet = Tweet.find(params[:id])
-    @current_user = User.find(session[:user_id])
-  end
 
-  def destroy
-    # find tweet by id
-    @tweet = Tweet.find(params[:id])
-    # delete tweet
-    @tweet.destroy
-    redirect_to root_path
-  end
 
 end

@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   # dashboard routes
   root 'home#home'
   post '/', to: 'home#create_tweet'
-  get 'tweet/:id', to: 'home#show_tweet'
-  resources :tweet, only: [:destroy], to: 'home#destroy'
+  get 'tweet/:id', to: 'tweets#show_tweet'
+  resources :tweet, only: [:destroy], to: 'tweets#destroy'
+
+  # comments
+  post 'tweet/:id', to: 'tweets#create_comment'
 
   # for you page
   get 'for-you', to: 'home#for_you_tweets'

@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :tweets
   has_many :friendships
   has_many :friends, through: :friendships
+  has_many :comments
 
 
   def not_friends_with?(id)
