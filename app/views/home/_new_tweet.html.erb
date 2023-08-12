@@ -1,6 +1,6 @@
 <div style="width: 55%;" class="mb-3 mt-3">
     <%=form_with(model: @tweet, local: true) do |f|%>
-        <%=f.text_area :message, class: "form-control div-h", placeholder: "What's on your mind?!"%>
+        <%=f.text_area :message, class: "form-control div-h", placeholder: "What's on your mind?"%>
         <div class="position-relative">
             <button type="submit" class="btn btn-primary position-absolute bottom-0 end-0 m-3">Tweet</button>
         </div>
