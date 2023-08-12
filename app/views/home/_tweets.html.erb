@@ -1,0 +1,14 @@
+<%@tweets.each do |tweet|%>
+    <div class="container border p-2 " style="width: 55%; height: 185px">
+        <div class="d-inline-flex tweet-container rounded p-2" onclick="location.href='/user/<%=tweet.user.id%>';">
+            <p style="margin-right: 5px;"><%=tweet.user.name%></p>
+            <p style="color: gray; cursor: pointer;">@<%=tweet.user.username%></p>
+        </div>
+        <div class="container tweet-container rounded" style="cursor: pointer;" onclick="location.href='/tweet/<%=tweet.id%>';">
+            <h6 class="" style="font-family: Tahoma, sans-serif; font-size: medium;"><%=tweet.message%></h6>
+        </div>
+        <div class="container mt-3">
+            <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
+        </div>
+    </div>
+<%end%>

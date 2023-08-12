@@ -1,0 +1,10 @@
+<div class="side-bar">
+    <h1>Tweetter</h1>
+    <div class="border rounded p-2 text-center">
+        <p>Welcome <strong><%= @user.name%></strong></p>
+        <p>@<strong><%= @user.username%></strong></p>
+        <p>Followers: <%= @followers%></p>
+        <p>Following: <%= @following%></p>
+    </div>
+    <%= link_to 'Logout', login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"}, class: "btn btn-light my-3" %>
+</div>

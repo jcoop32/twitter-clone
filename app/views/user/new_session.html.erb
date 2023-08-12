@@ -1,10 +1,7 @@
 <div class="container d-flex flex-column justify-content-center align-items-center border rounded mt-5 p-2">
-
     <div>
         <h1>Login</h1>
     </div>
-
-
     <div class="p-3">
     <%= form_with(scope: :user, url: login_path, local: true) do |f|%>
         <p>
@@ -23,6 +20,5 @@
     <a href="/signup">
         <button class="btn btn-warning">Sign Up</button>
     </a>
-
     </div>
 </div>

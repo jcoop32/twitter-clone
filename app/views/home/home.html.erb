@@ -1,14 +1,5 @@
 <div class="container ">
-    <div class="side-bar">
-        <h1>Tweetter</h1>
-        <div class="border rounded p-2 text-center">
-            <p>Welcome <strong><%= @user.name%></strong></p>
-            <p>@<strong><%= @user.username%></strong></p>
-            <p>Followers: <%= @followers%></p>
-            <p>Following: <%= @following%></p>
-        </div>
-        <%= link_to 'Logout', login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"}, class: "btn btn-light my-3" %>
-    </div>
+    <%=render 'side_bar'%>
     <%# feed filter %>
     <div class="container p-2 d-inline-flex flex-column justify-content-center align-items-center mt-3 ">
         <div class="mb-2 border text-bg-dark d-inline-flex justify-content-center align-items-end sticky-top p-2" style="width: 55%;">
@@ -25,26 +16,7 @@
         <%=render 'new_tweet'%>
         <%#  %>
         <%# tweet container %>
-        <%@tweets.each do |tweet|%>
-            <div class="container border p-2 " style="width: 55%; height: 185px">
-                <div class="d-inline-flex tweet-container rounded p-2" onclick="location.href='/user/<%=tweet.user.id%>';">
-                    <p style="margin-right: 5px;"><%=tweet.user.name%></p>
-                    <p style="color: gray; cursor: pointer;">@<%=tweet.user.username%></p>
-                </div>
-                <div class="container tweet-container rounded" style="cursor: pointer;" onclick="location.href='/tweet/<%=tweet.id%>';">
-                    <h6 class="" style="font-family: Tahoma, sans-serif; font-size: medium;"><%=tweet.message%></h6>
-                </div>
-                <div class="container mt-3">
-                    <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
-                </div>
-            </div>
-        <%end%>
+        <%=render 'tweets'%>
     </div>
 </div>
 
-<%# <script>
-    const for_you_tab = $('#for_you');
-    for_you_tab.on('click', function(e){
-        e.addClass('active');
-    })
-</script> %>

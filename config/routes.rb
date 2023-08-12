@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   # for you page
   get 'for-you', to: 'home#for_you_tweets'
+  post 'for-you', to: 'home#create_tweet'
 
   # follow user
   post '/follow/:id', to: 'user#follow_user'
