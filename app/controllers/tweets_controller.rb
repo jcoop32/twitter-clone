@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
 
   def new_comment
+    user_info()
     @comment = Comment.new
   end
 
@@ -17,10 +18,9 @@ class TweetsController < ApplicationController
     end
   end
 
-
   def show_tweet
+    user_info()
     @tweet = Tweet.find(params[:id])
-    @current_user = User.find(session[:user_id])
     @comments = @tweet.comments.reverse
   end
 
@@ -30,5 +30,12 @@ class TweetsController < ApplicationController
     # delete tweet
     @tweet.destroy
     redirect_to root_path
+  end
+
+  private
+  def user_info
+    @user = User.find(session[:user_id])
+    @following = @user.friends.count
+    @followers = Friendship.where(friend_id: @user.id).count
   end
 end

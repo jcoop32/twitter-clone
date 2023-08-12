@@ -50,7 +50,7 @@ class UserController < ApplicationController
   def show_user
     @user = User.find(params[:id])
     @current_user = User.find(session[:user_id])
-    @tweets = Tweet.where(user_id: @user.id)
+    @tweets = Tweet.where(user_id: @user.id).reverse
   end
 
   def follow_user
@@ -76,5 +76,6 @@ class UserController < ApplicationController
     # flash[:notice] = "Stopped unfollowed"
     redirect_back(fallback_location: root_path)
   end
+
 
 end

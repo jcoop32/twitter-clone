@@ -1,13 +1,6 @@
 <div class="container">
     <div class=" mt-5">
-        <a onclick="history.go(-1)">
-            <button class="btn btn-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                </svg>
-                Back
-            </button>
-        </a>
+        <%=render 'components/back_button'%>
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center mb-4">
         <div class="">
@@ -25,13 +18,5 @@
 
     </div>
     <p class="text-center">Tweets</p>
-    <%@tweets.each do |tweet|%>
-        <div class="container">
-            <div onclick="location.href='/tweet/<%=tweet.id%>';" class="container border p-3 tweet-container" style="width: 55%; cursor: pointer;">
-            <p><%=tweet.user.name%> <span style="color: gray;">@<%=tweet.user.username%></span></p>
-                <h6><%=tweet.message%></h6>
-                <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
-            </div>
-        </div>
-    <%end%>
+    <%=render 'home/tweets'%>
 </div>
