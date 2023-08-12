@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'for-you', to: 'home#for_you_tweets'
   post 'for-you', to: 'home#create_tweet'
 
-  # follow user
+  # follow and unfollow users
   post '/follow/:id', to: 'user#follow_user'
   resources :friendship, only: [:destroy], to: 'user#unfollow_user'
 

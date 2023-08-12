@@ -67,8 +67,11 @@ class UserController < ApplicationController
   end
 
   def unfollow_user
+    # find current user
     current_user = User.find(session[:user_id])
+    # grab the friendship between current and user based on show page
     friendship = current_user.friendships.where(friend_id: params[:id]).first
+    # 'unfollow' user
     friendship.destroy
     # flash[:notice] = "Stopped unfollowed"
     redirect_back(fallback_location: root_path)
