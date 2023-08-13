@@ -13,6 +13,7 @@ class UserController < ApplicationController
       # redirect to login page
       redirect_to '/login'
     else
+      # error - re-render page
       render 'new_user', status: :unprocessable_entity
     end
   end

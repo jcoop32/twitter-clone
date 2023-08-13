@@ -1,7 +1,7 @@
 <div class="container">
     <%=render 'components/side_bar'%>
     <%# feed filter %>
-    <div class="container p-2 d-inline-flex flex-column justify-content-center align-items-center mt-3 ">
+    <div class="container p-2 d-inline-flex flex-column justify-content-center align-items-center mt-3 ms-3">
         <div class="mb-2 border text-bg-dark d-inline-flex justify-content-center align-items-end sticky-top p-2" style="width: 55%;">
             <ul class="nav nav-underline">
                 <li class="nav-item me-5" id="for_you">
@@ -15,7 +15,7 @@
         <%# tweet message partial %>
         <%=render 'tweets/new_tweet'%>
         <%# tweet container %>
-        <%=render 'tweets/tweets'%>
+        <%=render 'tweets/tweets', cached: true%>
     </div>
 </div>
 

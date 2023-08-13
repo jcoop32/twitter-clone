@@ -3,26 +3,30 @@
 </div>
 <div class="container p-2 d-flex flex-column justify-content-center align-items-center">
     <%=render 'components/back_button'%>
+    <%# tweet creater info %>
     <div class="border rounded p-3" style="width: 55%;">
         <div class="d-inline-flex align-items-center" style="cursor: pointer;" onclick="location.href='/user/<%=@tweet.user.id%>';">
             <p style="margin-right: 5px;"><%=@tweet.user.name%></p>
             <p style="color: gray; margin-right: 5px;">@<%=@tweet.user.username%></p>
             <p style="color: gray; font-size: smaller;">• <%=time_ago_in_words(@tweet.created_at)%></p>
         </div>
+        <%# message %>
         <div class="container">
             <p class="fs-4"><%=@tweet.message%></p>
-
         </div>
+        <%# image %>
         <%if @tweet.image?%>
             <div class="container d-flex align-items-center justify-content-center">
-                <img class="tweet_img mb-3" src="<%=@tweet.image%>" alt="">
+                <img class="tweet_img mb-3 border" src="<%=@tweet.image%>" alt="">
             </div>
         <%end%>
+        <%# delete tweet %>
         <%if @tweet.user_id == session[:user_id]%>
         <div class="position-relative mt-5">
             <%= link_to 'Delete', tweet_path(@tweet), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-danger position-absolute bottom-0 end-0"%>
         </div>
         <%end%>
+        <%# like and comment container %>
         <div class="container d-flex align-items-center justify-content-end" >
             <%if @user.liked_tweet?(@tweet.id)%>
                 <%= link_to '<i class="fa-solid fa-heart"></i>'.html_safe, like_path(@tweet), data: {turbo_method: :delete}, class: "btn"%>
@@ -40,7 +44,7 @@
             </div>
         </div>
     </div>
-
+    <%# comments %>
     <div style="width: 55%;" class="mb-3 mt-3">
         <p>Comments</p>
         <%# new comment form %>
