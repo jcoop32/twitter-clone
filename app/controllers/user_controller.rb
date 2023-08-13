@@ -9,7 +9,7 @@ class UserController < ApplicationController
     @user = User.new(params.require(:user).permit(:name, :username, :email, :password))
     # if user is valid then it saves
     if @user.save
-      flash[:notice] = "Account Successfully created"
+      # flash[:notice] = "Account Successfully created"
       # redirect to login page
       redirect_to '/login'
     else

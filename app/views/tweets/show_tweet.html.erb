@@ -23,6 +23,22 @@
             <%= link_to 'Delete', tweet_path(@tweet), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-danger position-absolute bottom-0 end-0"%>
         </div>
         <%end%>
+        <div class="container d-flex align-items-center justify-content-end" >
+            <%if @user.liked_tweet?(@tweet.id)%>
+                <%= link_to '<i class="fa-solid fa-heart"></i>'.html_safe, like_path(@tweet), data: {turbo_method: :delete}, class: "btn"%>
+            <%else%>
+                <form action="/like/<%=@tweet.id%>" method="post">
+                    <button type="submit" class="btn"><i class="fa-regular fa-heart"></i></button>
+                </form>
+            <%end%>
+            <span><%= @tweet.likes.count%></span>
+            <div>
+                <div class="d-flex align-items-center justify-content-end" onclick="location.href='/tweet/<%=@tweet.id%>';">
+                    <button class="btn"><i class="fa-regular fa-comment"></i></button>
+                    <span><%= @tweet.comments.count%></span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div style="width: 55%;" class="mb-3 mt-3">
@@ -36,7 +52,7 @@
         <%end%>
     </div>
     <%# comments section %>
-    <%= render 'comments'%>
+    <%= render 'tweets/comments'%>
 </div>
 
 
