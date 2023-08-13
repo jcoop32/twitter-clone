@@ -16,16 +16,18 @@
             <%# tweet image %>
             <%if tweet.image?%>
                 <div class="container d-flex align-items-center justify-content-center">
-                    <img class="tweet_img border" src="<%=tweet.image%>" alt="image from @<%=tweet.user.username%>>">
+                    <img class="tweet_img border mt-2" src="<%=tweet.image%>" alt="image from @<%=tweet.user.username%>>">
                 </div>
             <%end%>
-            <%# time tweeted %>
-            </div>
-            <div class="container">
-                <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%> ago</small>
+
             </div>
             <%# like and comments buttons %>
             <div class="container d-flex align-items-center justify-content-end" >
+                <%# time tweeted %>
+                <div class="container">
+                    <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%> ago</small>
+                </div>
+                <%# like button %>
                 <%if @user.liked_tweet?(tweet.id)%>
                     <%= link_to '<i class="fa-solid fa-heart"></i>'.html_safe, like_path(tweet), data: {turbo_method: :delete}, class: "btn"%>
                 <%else%>
@@ -33,7 +35,9 @@
                         <button type="submit" class="btn"><i class="fa-regular fa-heart"></i></button>
                     </form>
                 <%end%>
+                <%# Like count %>
                 <span><%= tweet.likes.count%></span>
+                <%# comment count %>
                 <div>
                     <div class="d-flex align-items-center justify-content-end" onclick="location.href='/tweet/<%=tweet.id%>';">
                         <button class="btn"><i class="fa-regular fa-comment"></i></button>

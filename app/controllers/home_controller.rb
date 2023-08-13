@@ -10,6 +10,8 @@ class HomeController < ApplicationController
     user_info()
     # show tweets from the user that the current user isnt following
     @tweets = Tweet.where.not(user_id: @user.friends.all).and(Tweet.where.not(user_id: @user.id)).reverse
+    # @all_tweets = Tweet.all
+    # @tweets = @user.friends.all
   end
 
   def new_tweet

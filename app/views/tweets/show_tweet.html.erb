@@ -20,12 +20,7 @@
                 <img class="tweet_img mb-3 border" src="<%=@tweet.image%>" alt="">
             </div>
         <%end%>
-        <%# delete tweet %>
-        <%if @tweet.user_id == session[:user_id]%>
-        <div class="position-relative mt-5">
-            <%= link_to 'Delete', tweet_path(@tweet), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-danger position-absolute bottom-0 end-0"%>
-        </div>
-        <%end%>
+
         <%# like and comment container %>
         <div class="container d-flex align-items-center justify-content-end" >
             <%if @user.liked_tweet?(@tweet.id)%>
@@ -43,6 +38,12 @@
                 </div>
             </div>
         </div>
+        <%# delete tweet %>
+        <%if @tweet.user_id == session[:user_id]%>
+        <div class="position-relative mt-5">
+            <%= link_to 'Delete', tweet_path(@tweet), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-danger position-absolute bottom-0 end-0"%>
+        </div>
+        <%end%>
     </div>
     <%# comments %>
     <div style="width: 55%;" class="mb-3 mt-3">
