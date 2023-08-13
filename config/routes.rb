@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   # comments
   post 'tweet/:id', to: 'tweets#create_comment'
 
+  # likes
+  post 'like/:id', to: 'tweets#create_like'
+  resources :likes, only: [:destroy], to: 'tweets#unlike_tweet'
+
   # for you page
   get 'for-you', to: 'home#for_you_tweets'
   post 'for-you', to: 'home#create_tweet'

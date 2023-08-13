@@ -14,10 +14,15 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships
   has_many :comments
+  has_many :likes
 
 
   def not_friends_with?(id)
     !self.friends.where(id: id).exists?
+  end
+
+  def liked_tweet?(tweet_id)
+    self.likes.where(tweet_id: tweet_id).exists?
   end
 
 end

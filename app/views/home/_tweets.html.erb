@@ -9,23 +9,30 @@
             </div>
             <div class="tweet-container" style="cursor: pointer;" onclick="location.href='/tweet/<%=tweet.id%>';">
                 <div class="container" >
-                    <h6 class="" style="font-family: Tahoma, sans-serif;"><%=tweet.message%></h6>
+                    <h6 style="font-family: Tahoma, sans-serif;"><%=tweet.message%></h6>
                 </div>
-                <div class="container d-flex justify-content-between align-items-center">
-                    <div>
-                        <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
-                    </div>
-                    <%# <button class="btn"><i class="fa-solid fa-heart"></i></button> %>
-                    <div class="d-flex align-items-center justify-content-end">
-
-                    </div>
-                    <div class="d-flex align-items-center justify-content-end">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <button class="btn"><i class="fa-regular fa-comment"></i></button>
-                            <span><%= tweet.comments.count%></span>
-                        </div>
-                        <button class="btn"><i class="fa-regular fa-heart"></i></button>
-                        <span><%= tweet.likes%></span>
+            <%if tweet.image?%>
+                <div class="container d-flex align-items-center justify-content-center">
+                    <img class="tweet_img" src="<%=tweet.image%>" alt="">
+                </div>
+            <%end%>
+            </div>
+            <div class="container">
+                <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%></small>
+            </div>
+            <div class="container d-flex align-items-center justify-content-end" >
+                <%if @user.liked_tweet?(tweet.id)%>
+                    <%= link_to '<i class="fa-solid fa-heart"></i>'.html_safe, like_path(tweet), data: {turbo_method: :delete}, class: "btn"%>
+                <%else%>
+                    <form action="/like/<%=tweet.id%>" method="post">
+                        <button type="submit" class="btn"><i class="fa-regular fa-heart"></i></button>
+                    </form>
+                <%end%>
+                <span><%= tweet.likes.count%></span>
+                <div>
+                    <div class="d-flex align-items-center justify-content-end" onclick="location.href='/tweet/<%=tweet.id%>';">
+                        <button class="btn"><i class="fa-regular fa-comment"></i></button>
+                        <span><%= tweet.comments.count%></span>
                     </div>
                 </div>
             </div>

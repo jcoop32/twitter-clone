@@ -17,7 +17,7 @@ class HomeController < ApplicationController
   end
 
   def create_tweet
-    @tweet = Tweet.new(params.permit(:message))
+    @tweet = Tweet.new(params.permit(:message, :image))
     @tweet.user_id = session[:user_id]
     if @tweet.save
       # flash[:notice] = "Tweet successful"

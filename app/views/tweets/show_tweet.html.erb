@@ -4,16 +4,22 @@
 <div class="container p-2 d-flex flex-column justify-content-center align-items-center">
     <%=render 'components/back_button'%>
     <div class="border rounded p-3" style="width: 55%;">
-        <div class="d-inline-flex" style="cursor: pointer;" onclick="location.href='/user/<%=@tweet.user.id%>';">
+        <div class="d-inline-flex align-items-center" style="cursor: pointer;" onclick="location.href='/user/<%=@tweet.user.id%>';">
             <p style="margin-right: 5px;"><%=@tweet.user.name%></p>
-            <p style="color: gray;">@<%=@tweet.user.username%></p>
+            <p style="color: gray; margin-right: 5px;">@<%=@tweet.user.username%></p>
+            <p style="color: gray; font-size: smaller;">• <%=time_ago_in_words(@tweet.created_at)%></p>
         </div>
         <div class="container">
             <p class="fs-4"><%=@tweet.message%></p>
-            <small style="color: gray;"><%=time_ago_in_words(@tweet.created_at)%></small>
+
         </div>
+        <%if @tweet.image?%>
+            <div class="container d-flex align-items-center justify-content-center">
+                <img class="tweet_img mb-3" src="<%=@tweet.image%>" alt="">
+            </div>
+        <%end%>
         <%if @tweet.user_id == session[:user_id]%>
-        <div class="position-relative">
+        <div class="position-relative mt-5">
             <%= link_to 'Delete', tweet_path(@tweet), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "btn btn-danger position-absolute bottom-0 end-0"%>
         </div>
         <%end%>

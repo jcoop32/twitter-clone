@@ -33,3 +33,8 @@ body {
   height: 100px;
   resize: none;
 }
+
+.tweet_img {
+  width: 75%;
+  border-radius: 10px;
+}
