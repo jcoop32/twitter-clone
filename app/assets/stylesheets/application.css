@@ -30,6 +30,9 @@ body {
 .tweet-width {
   width: 55%;
 }
+.comment-width {
+  width: 53%;
+}
 
 .div-h {
   height: 150px;
@@ -62,5 +65,8 @@ body {
   }
   .side-bar {
     visibility: hidden;
+  }
+  .comment-width {
+    width: 98%;
   }
 }

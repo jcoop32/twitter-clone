@@ -20,22 +20,23 @@ class UserController < ApplicationController
 
   # login/session
   def new_session
+
   end
 
   def create_session
     # find user by username
-    user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(username: params[:user][:username])
     # check password
-    if user && user.authenticate(params[:user][:password])
+    if @user && @user.authenticate(params[:user][:password])
       # set session to logged in user
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       # display success notice
       # flash[:notice] = "Successful login"
       # go back to home/dashboard
       redirect_to root_path
     else
-      flash.now[:alert] = "Bad Credentials. Try again"
-      render 'new_session'
+      flash.now[:alert] = "Incorrect username or password. Try again"
+      render 'new_session', status: :unprocessable_entity
     end
   end
 
@@ -82,6 +83,5 @@ class UserController < ApplicationController
     # flash[:notice] = "Stopped unfollowed"
     redirect_back(fallback_location: root_path)
   end
-
 
 end

@@ -15,10 +15,15 @@
             <%=f.password_field :password%>
         </p>
         <button type="submit" class="btn btn-primary">Log In</button>
+
     <%end%>
     <br>
-    <a href="/signup">
-        <button class="btn btn-warning">Sign Up</button>
-    </a>
+    <span class="text-white text-decoration-none">New user?</span>
+    <a href="/signup">Sign up.</a>
+    </div>
+    <div class="text-danger">
+        <%flash.each do |name, msg|%>
+            <%=msg%>
+        <%end%>
     </div>
 </div>

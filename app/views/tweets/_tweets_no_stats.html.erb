@@ -27,15 +27,8 @@
                 <div class="container">
                     <small style="color: gray;"><%=time_ago_in_words(tweet.created_at)%> ago</small>
                 </div>
-                <%# like button %>
-                <%if @user.liked_tweet?(tweet.id)%>
-                    <%= link_to '<i class="fa-solid fa-heart"></i>'.html_safe, like_path(tweet), data: {turbo_method: :delete}, class: "btn"%>
-                <%else%>
-                    <form action="/like/<%=tweet.id%>" method="post">
-                        <button type="submit" class="btn"><i class="fa-regular fa-heart"></i></button>
-                    </form>
-                <%end%>
                 <%# Like count %>
+                <i class="fa-solid fa-heart me-2"></i>
                 <span><%= tweet.likes.count%></span>
                 <%# comment count %>
                 <div>
