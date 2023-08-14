@@ -34,6 +34,10 @@ body {
   width: 53%;
 }
 
+.logo-mobile {
+  visibility: hidden;
+}
+
 .div-h {
   height: 150px;
   resize: none;
@@ -49,10 +53,10 @@ body {
   /* border: 1px solid gray; */
 }
 
-@media screen and (max-width: 1410px) {
+@media screen and (max-width: 1415px) {
   .side-bar {
     position: fixed;
-    width: 10%;
+    width: 200px;
   }
   .small-screen {
     width: 100%;
@@ -68,5 +72,8 @@ body {
   }
   .comment-width {
     width: 98%;
+  }
+  .logo-mobile {
+    visibility: visible;
   }
 }
