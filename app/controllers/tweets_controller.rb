@@ -19,9 +19,14 @@ class TweetsController < ApplicationController
   end
 
   def show_tweet
-    user_info()
-    @tweet = Tweet.find(params[:id])
-    @comments = @tweet.comments.reverse
+    if !session[:user_id]
+      # redirect_to login_path
+      render 'components/not_logged_in_page'
+    else
+      user_info()
+      @tweet = Tweet.find(params[:id])
+      @comments = @tweet.comments.reverse
+    end
   end
 
   def destroy

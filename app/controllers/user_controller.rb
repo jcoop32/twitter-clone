@@ -49,9 +49,14 @@ class UserController < ApplicationController
 
   # user profile
   def show_user
-    @user = User.find(params[:id])
-    @current_user = User.find(session[:user_id])
-    @tweets = Tweet.where(user_id: @user.id).reverse
+    if !session[:user_id]
+      # redirect_to login_path
+      render 'components/not_logged_in_page'
+    else
+      @user = User.find(params[:id])
+      @current_user = User.find(session[:user_id])
+      @tweets = Tweet.where(user_id: @user.id).reverse
+    end
   end
 
   def follow_user
