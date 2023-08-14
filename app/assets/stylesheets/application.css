@@ -23,6 +23,12 @@ body {
 
 .side-bar {
   position: fixed;
+  z-index: 1;
+  width: 280px;
+  display: block;
+}
+.tweet-width {
+  width: 55%;
 }
 
 .div-h {
@@ -38,4 +44,23 @@ body {
   width: 75%;
   border-radius: 10px;
   /* border: 1px solid gray; */
+}
+
+@media screen and (max-width: 1410px) {
+  .side-bar {
+    position: fixed;
+    width: 10%;
+  }
+  .small-screen {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1330px) {
+  .tweet-width {
+    width: 100%;
+  }
+  .side-bar {
+    visibility: hidden;
+  }
 }
