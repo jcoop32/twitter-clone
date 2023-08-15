@@ -17,6 +17,10 @@ body {
   height: 100%;
 }
 
+.hide-box {
+  visibility: hidden;
+}
+
 .tweet-container:hover {
   background-color: #16181c;
 }
