@@ -23,8 +23,7 @@ body {
 
 .side-bar {
   position: fixed;
-  z-index: 1;
-  width: 280px;
+  width: 275px;
   display: block;
 }
 .tweet-width {

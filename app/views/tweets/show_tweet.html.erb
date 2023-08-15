@@ -1,13 +1,12 @@
-<div class="container d-flex justify-content-start ">
-    <%=render 'components/side_bar'%>
-</div>
 <div class="container d-flex logo-mobile">
     <%=render 'components/back_button'%>
 </div>
+<div class="container d-flex">
+    <%=render 'components/side_bar'%>
+</div>
 <div class="container p-2 d-flex flex-column justify-content-center align-items-center mt-3">
-
     <%# tweet creater info %>
-    <div class="border rounded p-3 tweet-width">
+    <div class="border rounded p-3 tweet-width ">
         <div class="d-inline-flex align-items-center" style="cursor: pointer;" onclick="location.href='/user/<%=@tweet.user.id%>';">
             <p style="margin-right: 5px;"><%=@tweet.user.name%></p>
             <p style="color: gray; margin-right: 5px;">@<%=@tweet.user.username%></p>
@@ -62,5 +61,3 @@
     <%# comments section %>
     <%= render 'tweets/comments'%>
 </div>
-
-
