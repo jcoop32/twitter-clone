@@ -1,12 +1,16 @@
 <div class="mt-4 logo-mobile d-flex flex-column">
     <hr>
-    <div class="d-flex flex-row justify-content-evenly align-items-baseline">
+    <div class="d-flex flex-row justify-content-between align-items-baseline">
         <a href="/" class="text-decoration-none text-white text-center">
             <i class="fa-brands fa-twitter fa-xl"></i>
         </a>
+        <a href="/user_profile/<%=@user.id%>" class="text-decoration-none text-white text-center">
+            <i class="fa-solid fa-user fa-xl"></i>
+        </a>
+
         <%= link_to '<i class="fa-solid fa-arrow-right-from-bracket fa-xl mt-5 text-primary"></i>'.html_safe, login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"}, class:  "" %>
     </div>
-        <div class="d-flex">
-            <small class="mt-3 " style="font-size:;">Logged in as - <strong>@<%=@user.username%></strong></small>
+    <div class="d-flex">
+        <small class="mt-3 " style="font-size:;">Logged in as - <strong>@<%=@user.username%></strong></small>
     </div>
 </div>

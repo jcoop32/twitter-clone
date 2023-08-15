@@ -24,8 +24,8 @@
         <strong><%= @user.name%></strong>
       </p>
       <ul class="dropdown-menu text-small shadow">
-        <li><a class="dropdown-item" href="/user/<%=@user.id%>">Profile</a></li>
-        <li><a class="dropdown-item" href="/user/edit/<%=@user.id%>">Settings</a></li>
+        <li><a class="dropdown-item" href="/user_profile/<%=@user.id%>">Profile</a></li>
+        <li><a class="dropdown-item" href="/user/<%=@user.id%>">Settings</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><%= link_to 'Logout', login_path, data: { turbo_method: :delete }, data: {confirm: "Are you sure?"}, class:  " dropdown-item" %></li>
       </ul>

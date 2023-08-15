@@ -62,6 +62,22 @@ class UserController < ApplicationController
     end
   end
 
+  def edit_user
+    @user = User.find(session[:user_id])
+  end
+
+  def update_user
+    @user = User.find(session[:user_id])
+    if @user.update(params.require(:user).permit(:name, :username))
+      redirect_to root_path
+    else
+      flash.now[:notice] = 'Something went wrong'
+      render 'edit_user'
+    end
+  end
+
+
+
   def follow_user
     # friend = User.find(params[:id])
     current_user = User.find(session[:user_id])

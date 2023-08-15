@@ -1,0 +1,36 @@
+<div class="container d-flex flex-column justify-content-center align-items-center border rounded mt-5 p-2">
+
+<% if @user.errors.any? %>
+        <h2>The following errors prevented the user from being saved: </h2>
+        <ul>
+            <%@user.errors.full_messages.each do |msg|%>
+                <li><%=msg%></li>
+            <%end%>
+        </ul>
+    <%end%>
+    <div>
+        <h1>Update Profile</h1>
+    </div>
+    <div class="p-3">
+    <%= form_with(scope: :user, local: true) do |f|%>
+        <p>
+            <%=f.label :name%>
+            <br>
+            <%=f.text_field :name%>
+        </p>
+        <p>
+            <%=f.label :username%>
+            <br>
+            <%=f.text_field :username%>
+        </p>
+        <button type="submit" class="btn btn-primary">Make changes</button>
+        <a href="/">Cancel</a>
+
+    <%end%>
+    <br>
+    <div class="text-danger">
+        <%flash.each do |name, msg|%>
+            <%=msg%>
+        <%end%>
+    </div>
+</div>

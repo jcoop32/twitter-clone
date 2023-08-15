@@ -7,7 +7,7 @@
 <div class="container p-2 d-flex flex-column justify-content-center align-items-center mt-3">
     <%# tweet creater info %>
     <div class="border rounded p-3 tweet-width ">
-        <div class="d-inline-flex align-items-center" style="cursor: pointer;" onclick="location.href='/user/<%=@tweet.user.id%>';">
+        <div class="d-inline-flex align-items-center" style="cursor: pointer;" onclick="location.href='/user_profile/<%=@tweet.user.id%>';">
             <p style="margin-right: 5px;"><%=@tweet.user.name%></p>
             <p style="color: gray; margin-right: 5px;">@<%=@tweet.user.username%></p>
             <p style="color: gray; font-size: smaller;">• <%=time_ago_in_words(@tweet.created_at)%></p>

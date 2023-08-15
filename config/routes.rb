@@ -30,5 +30,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'user#create_user'
 
   # user profiles
-  get 'user/:id', to: 'user#show_user'
+  get 'user_profile/:id', to: 'user#show_user'
+  get 'user/:id', to: 'user#edit_user'
+  post 'user/:id', to: 'user#update_user'
 end

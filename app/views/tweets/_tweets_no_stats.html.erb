@@ -1,10 +1,10 @@
 <% if @tweets.count < 1 %>
-    <p>Follow to see tweets.</p>
+    <p>No Tweets to see.</p>
 <%else%>
     <%@tweets.each do |tweet|%>
         <div class="container border p-2 tweet-width">
         <%# tweet creator info %>
-            <div class="d-inline-flex rounded p-2" onclick="location.href='/user/<%=tweet.user.id%>';">
+            <div class="d-inline-flex rounded p-2" onclick="location.href='/user_profile/<%=tweet.user.id%>';">
                 <p style="margin-right: 5px;"><%=tweet.user.name%></p>
                 <p style="color: gray; cursor: pointer;">@<%=tweet.user.username%></p>
             </div>
