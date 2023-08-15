@@ -6,6 +6,10 @@
         <div>
             <h1>@<%=@user.username%></h1>
         </div>
+        <div class="d-flex" style="color: gray;">
+            <p class="me-3">Followers: <%=@following%></p>
+            <p>Followers: <%=@followers%></p>
+        </div>
         <div>
             <%if @current_user.id != @user.id%>
                 <%if @current_user.id != @user.id && @current_user.not_friends_with?(@user.id)%>

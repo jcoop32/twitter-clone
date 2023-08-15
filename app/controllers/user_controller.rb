@@ -57,6 +57,8 @@ class UserController < ApplicationController
       @user = User.find(params[:id])
       @current_user = User.find(session[:user_id])
       @tweets = Tweet.where(user_id: @user.id).reverse
+      @following = @user.friends.count
+      @followers = Friendship.where(friend_id: @user.id).count
     end
   end
 
