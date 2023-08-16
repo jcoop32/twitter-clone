@@ -2,7 +2,7 @@
     <p>Follow to see tweets.</p>
 <%else%>
     <%@tweets.each do |tweet|%>
-        <div class="container border p-2 tweet-width">
+        <div class="container border p-2 tweet-width" id="<%=tweet.id%>">
         <%# tweet creator info %>
             <div class="d-inline-flex rounded p-2" onclick="location.href='/user_profile/<%=tweet.user.id%>';">
                 <p style="margin-right: 5px;"><%=tweet.user.name%></p>

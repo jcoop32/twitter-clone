@@ -24,14 +24,12 @@ class TweetsController < ApplicationController
       render 'components/not_logged_in_page'
     else
       user_info()
-      @tweet = Tweet.find(params[:id])
       @comments = @tweet.comments.reverse
     end
   end
 
   def destroy
     # find tweet by id
-    @tweet = Tweet.find(params[:id])
     # delete tweet
     @tweet.destroy
     redirect_to root_path
@@ -40,14 +38,12 @@ class TweetsController < ApplicationController
   #Likes
   def create_like
     user_info()
-    @tweet = Tweet.find(params[:id])
     @like = Like.new(user_id: @user.id, tweet_id: @tweet.id)
     done_with_like()
   end
 
   def unlike_tweet
     user_info()
-    @tweet = Tweet.find(params[:id])
     @like = Like.find_by(user_id: @user.id, tweet_id: @tweet.id)
     @like.destroy
     redirect_back(fallback_location: root_path)
@@ -56,6 +52,7 @@ class TweetsController < ApplicationController
   private
   def user_info
     @user = User.find(session[:user_id])
+    @tweet = Tweet.find(params[:id])
     @following = @user.friends.count
     @followers = Friendship.where(friend_id: @user.id).count
   end
