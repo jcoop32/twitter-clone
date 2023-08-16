@@ -31,6 +31,7 @@ class TweetsController < ApplicationController
   def destroy
     # find tweet by id
     # delete tweet
+    user_info()
     @tweet.destroy
     redirect_to root_path
   end
